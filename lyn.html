@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alinskie Abdul Ajij - Web Developer</title>
+    <style>
+        :root {
+            --primary: #6e48aa;
+            --secondary: #9d50bb;
+            --accent: #4776e6;
+            --text: #f8f9fa;
+            --bg: #121212;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        /* Floating Particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .particle {
+            position: absolute;
+            background: rgba(110, 72, 170, 0.5);
+            border-radius: 50%;
+            animation: float 15s infinite linear;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-1000px) rotate(720deg);
+                opacity: 0;
+            }
+        }
+        
+        /* Main Layout */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        /* Header */
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+            overflow: hidden;
+            padding: 2rem 0;
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            z-index: -1;
+            transform: skewY(-3deg);
+            transform-origin: top left;
+        }
+        
+        .profile-pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--text);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            margin-bottom: 1.5rem;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(to right, var(--text), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 1rem;
+        }
+        
+        /* About Section */
+        .about {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+        
+        .about:hover {
+            transform: translateY(-5px);
+        }
+        
+        h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+            position: relative;
+            display: inline-block;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(to right, var(--accent), transparent);
+        }
+        
+        /* Project Section */
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .project-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .project-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .project-content {
+            padding: 1.5rem;
+        }
+        
+        .project-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent);
+        }
+        
+        .project-description {
+            opacity: 0.9;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+        
+        .tech-tag {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            background: rgba(110, 72, 170, 0.2);
+            color: var(--primary);
+            border-radius: 50px;
+            font-size: 0.8rem;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+            border: 1px solid var(--primary);
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+            background: rgba(0, 0, 0, 0.2);
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .social-link {
+            color: var(--text);
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .social-link:hover {
+            transform: translateY(-5px);
+            color: var(--accent);
+        }
+        
+        /* Glowing Effects */
+        .glow {
+            animation: glow 2s infinite alternate;
+        }
+        
+        @keyframes glow {
+            from {
+                box-shadow: 0 0 5px -5px var(--accent);
+            }
+            to {
+                box-shadow: 0 0 20px 5px var(--accent);
+            }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            .tagline {
+                font-size: 1rem;
+            }
+            .about, .project-card {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Particles Background -->
+    <div class="particles" id="particles"></div>
+    
+    <div class="container">
+        <header>
+            <img src="https://www.canva.com/design/DAGviBLYezM/Ua8ljuCh3Qo6GcLhKt1shw/edit?utm_content=DAGviBLYezM&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" alt="" class="profile-pic">
+            <h1>Alinskie Abdul Ajij</h1>
+            <p class="tagline">Web Developer & Siswa SMK Sangkuriang 1 Cimahi</p>
+        </header>
+        
+        <section class="about">
+            <h2>Tentang Saya</h2>
+            <p>
+                Halo! Saya Alinskie Abdul Ajij, seorang web developer muda yang bersemangat dengan kelas X PPLG 3 di SMK Sangkuriang 1 Cimahi. 
+                Saya memiliki minat yang besar dalam pengembangan web modern dengan desain yang menarik dan fungsionalitas yang mulus.
+                Terus belajar dan mengembangkan keterampilan saya dalam membangun pengalaman web yang luar biasa. </p>
+        </section>
+        
+        <section class="projects">
+            <div class="project-card glow">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRM6s4AMU4E251W93sU3iUK4_JD9irZmDGNqg&s" alt="Tampilan aplikasi kalkulator Python dengan antarmuka modern" height="40%" width="100%%">
+                <div class="project-content">
+                    <h3 class="project-title">Python Calculator</h3>
+                    <p class="project-description">
+                        Sebuah aplikasi kalkulator Python dengan antarmuka yang elegan dan fungsionalitas lengkap.
+                        Dibangun dengan Python dan Tkinter untuk GUI-nya.
+                    </p>
+                    <div>
+                        <span class="tech-tag">
+                            <a href="https://alinskieabdul69-lgtm.github.io/alinnn78/">COBAINN</a>
+                        </span>
+                        <span class="tech-tag">Tkinter</span>
+                        <span class="tech-tag">GUI</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <footer>
+        <div class="social-links">
+            <a href="https://share.google/vDVfjlfs9RDaR3ZUY" class="social-link">GitHub</a>
+            <a href="https://www.instagram.com/alunsss4?igsh=MWZhanN6dHBtaGFucw==" class="social-link">Instagram</a>
+            <a href="https://wa.me/+62851-8280-4509" class="social-link">WhatsApp</a>
+        </div>
+        <p>&copy; 2025 Alinskie Abdul Ajij. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Create floating particles
+        const particlesContainer = document.getElementById('particles');
+        const particleCount = 30;
+        
+        for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            
+            const size = Math.random() * 20 + 5;
+            const posX = Math.random() * window.innerWidth;
+            const delay = Math.random() * 5;
+            const duration = Math.random() * 10 + 10;
+            
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+            particle.style.left = `${posX}px`;
+            particle.style.bottom = `-${size}px`;
+            particle.style.animationDelay = `${delay}s`;
+            particle.style.animationDuration = `${duration}s`;
+            
+            // Random color variation
+            const hue = Math.random() * 30 + 250;
+            particle.style.background = `hsla(${hue}, 70%, 60%, 0.7)`;
+            
+            particlesContainer.appendChild(particle);
+        }
+        
+        // Add hover effect to project cards
+        const cards = document.querySelectorAll('.project-card');
+        cards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                card.style.setProperty('--mouse-x', x);
+                card.style.setProperty('--mouse-y', y);
+            });
+        });
+    </script>
+</body>
+</html>
